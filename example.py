@@ -1,13 +1,14 @@
-# Extends Keras' TensorBoard callback to include the Precision-Recall summary plugin.
+# Extends Tensorflow.Keras' TensorBoard callback to include the Precision-Recall summary plugin.
 
 import os
 from urllib.request import urlretrieve
 
 import pandas as pd
 
-from keras.callbacks import TensorBoard, EarlyStopping
-from keras.layers import Input, Dense
-from keras.models import Model
+import tensorflow.keras as keras
+from tensorflow.keras.callbacks import TensorBoard, EarlyStopping
+from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras.models import Model
 from sklearn import preprocessing
 from sklearn.model_selection import train_test_split
 from tensorboard.plugins.pr_curve import summary as pr_summary
@@ -27,8 +28,8 @@ class PRTensorBoard(TensorBoard):
 
         if self.pr_curve:
             # Get the prediction and label tensor placeholders.
-            predictions = self.model._feed_outputs[0]
-            labels = tf.cast(self.model._feed_targets[0], tf.bool)
+            predictions = self.model.outputs[0]
+            labels = tf.cast(self.model._targets[0], tf.bool)
             # Create the PR summary OP.
             self.pr_summary = pr_summary.op(name='pr_curve',
                                             predictions=predictions,

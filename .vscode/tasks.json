@@ -34,9 +34,18 @@
             "problemMatcher": []
         },
         {
-            "label": "convert model",
+            "label": "run example.py",
             "type": "shell",
             "command": "conda activate pr_tensorboard && python example.py",
+            "args": [],
+            "group": "build",
+            "problemMatcher": []
+        },
+        ,
+        {
+            "label": "start tensorboard",
+            "type": "shell",
+            "command": "conda activate pr_tensorboard && tensorboard --logdir logs/",
             "args": [],
             "group": "build",
             "problemMatcher": []
