@@ -1,0 +1,45 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "list environment",
+            "type": "shell",
+            "command": "conda activate pr_tensorboard && pip freeze",
+            "args": [],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "list python",
+            "type": "shell",
+            "command": "conda activate pr_tensorboard && python --version && python && import sys; print(sys.executable)",
+            "args": [],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "update python environment",
+            "type": "shell",
+            "command": "conda env update -f environment.yml",
+            "args": [],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "build python environment",
+            "type": "shell",
+            "command": "conda env create -f environment.yml",
+            "args": [],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "convert model",
+            "type": "shell",
+            "command": "conda activate pr_tensorboard && python example.py",
+            "args": [],
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+ }
